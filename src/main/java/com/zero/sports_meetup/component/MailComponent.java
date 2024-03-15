@@ -1,15 +1,17 @@
-package com.zero.sports_meetup.util;
+package com.zero.sports_meetup.component;
 
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
-public class MailUtil {
+public class MailComponent {
 
   private final JavaMailSender mailSender;
 
@@ -32,7 +34,7 @@ public class MailUtil {
       result = true;
 
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      log.error(e.getMessage());
     }
 
     return result;
